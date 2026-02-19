@@ -1,3 +1,6 @@
+# This is a copy of a Python script by Jürgen Weigert (https://github.com/jnweiger), and is used here under GPL-2.0 license
+# all credits and copyright to Jürgen Weigert
+
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 #
