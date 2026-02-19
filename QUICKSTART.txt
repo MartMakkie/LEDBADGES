@@ -1,0 +1,130 @@
+LED BADGE PROGRAMMER - QUICK START
+===================================
+
+Welcome! This tool lets you customize your LED badge with your own messages.
+
+FIRST TIME SETUP
+----------------
+
+Choose your operating system:
+
+┌─────────────────────────────────────────────────────────────┐
+│ macOS                                                       │
+└─────────────────────────────────────────────────────────────┘
+
+1. Open Terminal (press Cmd+Space, type "terminal", press Enter)
+
+2. Install Homebrew (if not already installed):
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+3. Install dependencies:
+   brew install python hidapi
+   pip3 install pyusb hidapi pillow
+
+4. Run the GUI:
+   cd [path-to-this-folder]
+   chmod +x start.sh
+   ./start.sh
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ Linux (Ubuntu/Debian)                                       │
+└─────────────────────────────────────────────────────────────┘
+
+1. Open Terminal
+
+2. Install dependencies:
+   sudo apt-get update
+   sudo apt-get install python3 python3-pip libhidapi-hidraw0
+   pip3 install pyusb hidapi pillow
+
+3. Run the GUI:
+   cd [path-to-this-folder]
+   chmod +x start.sh
+   sudo ./start.sh
+
+   Note: You need sudo for USB access. Alternatively, set up udev rules
+   (see README.md for details).
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ Windows                                                     │
+└─────────────────────────────────────────────────────────────┘
+
+1. Download and install Python from:
+   https://www.python.org/downloads/
+
+   IMPORTANT: Check "Add Python to PATH" during installation!
+
+2. Download libusb-win32 from:
+   https://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/1.2.6.0/
+
+3. Install libusb driver:
+   - Extract the zip file
+   - Go to: libusb-win32-bin-1.2.6.0\bin
+   - Right-click inf-wizard.exe → "Run as Administrator"
+   - Follow the wizard to install the driver for your LED badge
+
+4. Open Command Prompt as Administrator and run:
+   pip install pyusb hidapi pillow
+
+5. Double-click start.bat in this folder
+
+
+USING THE PROGRAM
+-----------------
+
+1. Plug in your LED badge via USB
+
+2. Run the program (double-click start.sh/start.bat or run from terminal)
+
+3. Click on "Message 1" tab
+
+4. Type your message in the text box
+
+5. Adjust settings:
+   - Speed: 1 (slow) to 8 (fast)
+   - Effect: How the text moves (Left, Right, Fixed, etc.)
+   - Flash: Check to make it blink
+   - Border: Check for animated border
+
+6. Add more messages using other tabs (optional)
+
+7. Click "Program Badge" button
+
+8. Wait for success message!
+
+
+TIPS
+----
+
+• You can use icons in your text: :heart: :smiley: etc.
+• You don't need to use all 8 message slots
+• Leave unused slots empty
+• Try "Hello World" first to test it works
+• Adjust brightness at the bottom (25% to 100%)
+
+
+TROUBLESHOOTING
+---------------
+
+Problem: "Could not find hidapi library"
+→ Solution: Install hidapi (see platform instructions above)
+
+Problem: "Permission denied" (Linux)
+→ Solution: Run with sudo: sudo ./start.sh
+
+Problem: "Badge not detected"
+→ Solution: Check USB connection, try different port
+
+Problem: Python not found
+→ Solution: Make sure Python 3 is installed and in PATH
+
+
+NEED HELP?
+----------
+
+See the detailed README.md file in this folder, or ask at the conference
+info desk.
+
+Have fun with your LED badge!

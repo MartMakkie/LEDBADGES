@@ -1,0 +1,189 @@
+═══════════════════════════════════════════════════════════════════
+  LED BADGE PROGRAMMER - Windows USB Driver Installation Guide
+═══════════════════════════════════════════════════════════════════
+
+This guide will help you install the USB driver needed for your LED badge
+on Windows. Follow these steps carefully.
+
+═══════════════════════════════════════════════════════════════════
+STEP 1: Download libusb-win32
+═══════════════════════════════════════════════════════════════════
+
+1. Open your web browser
+2. Go to: https://github.com/mcuee/libusb-win32/releases
+3. Download:  libusb-win32-bin-1.4.0.2.zip
+4. Wait for download to complete
+
+═══════════════════════════════════════════════════════════════════
+STEP 2: Extract the ZIP File
+═══════════════════════════════════════════════════════════════════
+
+1. Find the downloaded file (usually in Downloads folder)
+2. Right-click on: libusb-win32-bin-1.4.0.2.zip
+3. Select: "Extract All..."
+4. Click: "Extract"
+
+═══════════════════════════════════════════════════════════════════
+STEP 3: Connect Your LED Badge
+═══════════════════════════════════════════════════════════════════
+
+1. Take your LED badge
+2. Plug it into a USB port on your computer
+3. The badge should light up
+4. Leave it connected!
+
+═══════════════════════════════════════════════════════════════════
+STEP 4: Run the Driver Installation Wizard
+═══════════════════════════════════════════════════════════════════
+
+1. Open the extracted folder: libusb-win32-bin-1.4.0.2.zip
+2. Open the subfolder: bin
+3. Find the file: inf-wizard.exe
+4. RIGHT-CLICK on: inf-wizard.exe
+5. Select: "Run as administrator"
+6. If prompted, click: "Yes" to allow changes
+
+   ┌─────────────────────────────────────────┐
+   │  User Account Control                   │
+   │                                         │
+   │  Do you want to allow this app to make  │
+   │  changes to your device?                │
+   │                                         │
+   │  inf-wizard.exe                         │
+   │                                         │
+   │            [ Yes ]    [ No ]            │
+   └─────────────────────────────────────────┘
+             Click "Yes"
+
+═══════════════════════════════════════════════════════════════════
+STEP 5: Follow the Installation Wizard
+═══════════════════════════════════════════════════════════════════
+
+SCREEN 1: Welcome
+   ┌─────────────────────────────────────────┐
+   │  Welcome to the LibUSB-Win32            │
+   │  Device Driver Installation Wizard      │
+   │                                         │
+   │                [ Next > ]               │
+   └─────────────────────────────────────────┘
+             Click "Next"
+
+SCREEN 2: Device Selection
+   ┌─────────────────────────────────────────┐
+   │  Select your device from the list:      │
+   │                                         │
+   │  ☑ 0x0416 0x5020 LS32 Custm HID         │  ← Select this one!
+   │  ☐ Other devices...                     │
+   │                                         │
+   │                [ Next > ]               │
+   └─────────────────────────────────────────┘
+   
+   IMPORTANT: Look for:
+   - Vendor ID: 0416 (or 0x0416)
+   - Product ID: 5020 (or 0x5020)
+   - Description: LS32 Custm HID (or similar)
+
+SCREEN 3: Save Location
+   ┌─────────────────────────────────────────┐
+   │  Save the driver information file:      │
+   │                                         │
+   │  File name: LS32_Custm_HID.inf          │
+   │                                         │
+   │                [ Next > ]               │
+   └─────────────────────────────────────────┘
+             Click "Next" (default name is fine)
+
+SCREEN 4: Install Driver
+   ┌─────────────────────────────────────────┐
+   │  Ready to install the driver            │
+   │                                         │
+   │                                         │
+   │           [ Install Now... ]            │
+   └─────────────────────────────────────────┘
+             Click "Install Now..."
+
+SCREEN 5: Windows Security Warning
+   ┌─────────────────────────────────────────┐
+   │  Windows Security                       │
+   │                                         │
+   │  Would you like to install this device  │
+   │  software?                              │
+   │                                         │
+   │  Name: LS32 Custm HID                   │
+   │  Publisher: libusb-win32                │
+   │                                         │
+   │  [ Install ]          [ Don't Install ] │
+   └─────────────────────────────────────────┘
+             Click "Install"
+
+SCREEN 6: Success!
+   ┌─────────────────────────────────────────┐
+   │  Driver Installation Complete           │
+   │                                         │
+   │  The driver has been successfully       │
+   │  installed for your device.             │
+   │                                         │
+   │                  [ OK ]                 │
+   └─────────────────────────────────────────┘
+             Click "OK"
+
+═══════════════════════════════════════════════════════════════════
+STEP 6: Verify Installation
+═══════════════════════════════════════════════════════════════════
+
+1. Open Device Manager:
+   - Press: Windows key + X
+   - Select: "Device Manager"
+
+2. Look for: "libusb-win32 devices"
+   
+   Device Manager
+   └─ libusb-win32 devices
+      └─ LS32 Custm HID  ← Should appear here
+
+3. If you see it listed, the driver is installed correctly!
+
+═══════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════
+
+Problem: "No devices found" in Step 5, Screen 2
+Solution: 
+  - Make sure the badge is plugged in
+  - Try a different USB port
+  - Unplug and replug the badge
+  - Restart the wizard
+
+Problem: "Install failed" or error message
+Solution:
+  - Make sure you ran inf-wizard.exe as Administrator
+  - Try unplugging the badge, restarting computer, and trying again
+  - Disable antivirus temporarily
+
+Problem: Badge not appearing in Device Manager
+Solution:
+  - Unplug and replug the badge
+  - Restart your computer
+  - Try a different USB port
+
+Problem: "Code 10" or "Code 28" error in Device Manager
+Solution:
+  - Right-click the device in Device Manager
+  - Select "Uninstall device"
+  - Check "Delete the driver software"
+  - Unplug badge, restart, and reinstall driver
+
+═══════════════════════════════════════════════════════════════════
+AFTER DRIVER INSTALLATION
+═══════════════════════════════════════════════════════════════════
+
+Once the driver is installed:
+1. Continue with the main LED Badge Programmer installation
+2. When the installer asks "Have you installed the USB driver?", answer: Y
+3. The installer will complete the rest of the setup
+
+═══════════════════════════════════════════════════════════════════
+
+If you still have problems, ask for help at the conference info desk!
+
+Good luck! 

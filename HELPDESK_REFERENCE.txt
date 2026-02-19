@@ -1,0 +1,208 @@
+═══════════════════════════════════════════════════════════════════
+  LED BADGE PROGRAMMER - Help Desk Quick Reference Card
+═══════════════════════════════════════════════════════════════════
+
+QUICK DIAGNOSIS CHECKLIST
+═══════════════════════════════════════════════════════════════════
+
+Ask these questions in order:
+
+☐ 1. Is the badge plugged into a USB port?
+     → If NO: Plug it in! The badge needs USB power.
+
+☐ 2. Does the badge light up when plugged in?
+     → If NO: Try different USB port or different cable.
+
+☐ 3. Which operating system are they using?
+     → macOS / Linux / Windows
+
+☐ 4. Did they run the correct installer for their OS?
+     → macOS: macos_installer.sh
+     → Linux: linux_installer.sh  
+     → Windows: windows_installer.ps1
+
+☐ 5. Did they run the installer with proper permissions?
+     → macOS: Should work normally
+     → Linux: Regular user (installer asks for sudo when needed)
+     → Windows: Must run as Administrator
+
+☐ 6. [Windows only] Did they install the USB driver?
+     → Check Device Manager for "libusb-win32 devices"
+     → If missing, guide them through WINDOWS_USB_DRIVER_GUIDE.txt
+
+☐ 7. Did they unplug and replug the badge after installation?
+     → Especially important on Linux (udev rules)
+
+☐ 8. Can they launch the application?
+     → macOS: Applications → "LED Badge Programmer"
+     → Linux: Application menu → "LED Badge Programmer"
+     → Windows: Start Menu → "LED Badge Programmer"
+
+☐ 9. Can they type a message in the GUI?
+     → Try: "Hello World"
+
+☐ 10. What happens when they click "Program Badge"?
+      → Success: Badge shows the message ✓
+      → Error: See error messages below
+
+═══════════════════════════════════════════════════════════════════
+COMMON ERROR MESSAGES
+═══════════════════════════════════════════════════════════════════
+
+ERROR: "Could not find the hidapi shared library"
+FIX:
+  macOS → Run: brew install hidapi
+  Linux → Run: sudo apt-get install libhidapi-hidraw0
+  Windows → Reinstall Python or run installer again
+
+ERROR: "Permission denied" or "Access denied"
+FIX:
+  macOS → Unplug and replug badge, try different USB port
+  Linux → Run: sudo ~/.local/share/ledbadge/launch.sh
+         OR set up udev rules (installer should have done this)
+  Windows → Check USB driver installation in Device Manager
+
+ERROR: "No device found"
+FIX:
+  1. Unplug badge, wait 5 seconds, plug back in
+  2. Try different USB port (avoid USB hubs if possible)
+  3. Check Device Manager (Windows) or System Info (Mac) to see if badge is detected
+
+ERROR: "Python not found" or "command not found"
+FIX:
+  → The isolated environment installer should have handled this
+  → Try running the installer again
+  → Make sure they're using the launcher, not running Python directly
+
+═══════════════════════════════════════════════════════════════════
+PLATFORM-SPECIFIC FIXES
+═══════════════════════════════════════════════════════════════════
+
+macOS Issues
+────────────
+Problem: "App is damaged and can't be opened"
+Fix: Right-click app → Open → Open again
+
+Problem: Installer won't run
+Fix: chmod +x macos_installer.sh
+     Then: ./macos_installer.sh
+
+Problem: "Homebrew not found"
+Fix: Install Homebrew first: https://brew.sh
+     Or run the installer - it will install Homebrew
+
+Linux Issues
+────────────
+Problem: "Command not found" when running installer
+Fix: chmod +x linux_installer.sh
+     Then: ./linux_installer.sh
+
+Problem: Still getting permission errors after installation
+Fix: 1. Unplug and replug badge
+     2. Log out and log back in
+     3. Add user to plugdev group:
+        sudo usermod -a -G plugdev $USER
+
+Problem: Desktop launcher doesn't appear
+Fix: Log out and log back in
+     Or run: update-desktop-database ~/.local/share/applications
+
+Windows Issues
+──────────────
+Problem: PowerShell won't run the script
+Fix: Right-click PowerShell → "Run as Administrator"
+     Then: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+     Then: .\windows_installer.ps1
+
+Problem: Badge not detected after driver installation
+Fix: 1. Open Device Manager
+     2. Look under "libusb-win32 devices"
+     3. If badge shows yellow warning, right-click → Uninstall
+     4. Unplug badge, restart computer, reinstall driver
+
+Problem: Python installation fails
+Fix: Download Python manually from python.org
+     Make sure to check "Add Python to PATH"
+
+═══════════════════════════════════════════════════════════════════
+TESTING STEPS
+═══════════════════════════════════════════════════════════════════
+
+To verify everything works:
+
+1. Launch the application
+2. Go to "Message 1" tab
+3. Type: "Hello World"
+4. Set speed to: 4
+5. Set effect to: "Left"
+6. Leave other options unchecked
+7. Click: "Program Badge"
+8. Wait for success message
+9. Check badge: Should show "Hello World" scrolling
+
+If this works → Everything is set up correctly! ✓
+
+═══════════════════════════════════════════════════════════════════
+ESCALATION PATH
+═══════════════════════════════════════════════════════════════════
+
+If basic troubleshooting doesn't work:
+
+Level 1 (You):
+  → Check badge is plugged in
+  → Verify correct installer was used
+  → Try different USB port
+  → Restart application
+
+Level 2 (Tech Support):
+  → Check system logs
+  → Verify dependencies installed correctly
+  → Test with different badge if available
+  → Try different computer
+
+Level 3 (Developer):
+  → Badge hardware issue
+  → OS compatibility issue
+  → Unknown error in logs
+
+═══════════════════════════════════════════════════════════════════
+QUICK COPY-PASTE COMMANDS
+═══════════════════════════════════════════════════════════════════
+
+macOS Fix Permissions:
+  sudo chown -R $USER ~/Applications/LEDBadgeProgrammer
+
+Linux Fix Permissions:
+  sudo usermod -a -G plugdev $USER
+  sudo udevadm control --reload-rules
+  sudo udevadm trigger
+
+Linux Manual Launch:
+  ~/.local/share/ledbadge/launch.sh
+
+Windows Check Device Manager:
+  Press Win+X → Select "Device Manager"
+  Look for: "libusb-win32 devices"
+
+Windows Fix PowerShell:
+  Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
+═══════════════════════════════════════════════════════════════════
+SUCCESS RATE TRACKING
+═══════════════════════════════════════════════════════════════════
+
+Keep tally marks for each outcome to track common issues:
+
+Successfully programmed on first try:     ||||
+Required USB driver help (Windows):       ||||
+Required permission fix (Linux):          ||
+Required Homebrew install (macOS):        |
+Badge hardware problem:                   
+Couldn't resolve:                         
+
+═══════════════════════════════════════════════════════════════════
+
+Remember: 95% of issues are either USB connection, driver/permissions,
+or wrong installer for the OS. Stay calm and work through the checklist!
+
+Good luck! 
