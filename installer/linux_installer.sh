@@ -79,7 +79,8 @@ sudo apt-get install -y \
     python3.11-venv \
     python3-pip \
     libhidapi-hidraw0 \
-    libhidapi-libusb0
+    libhidapi-libusb0 \
+    tk
 
 print_success "System dependencies installed"
 
