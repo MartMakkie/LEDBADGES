@@ -29,6 +29,11 @@ A simple, cross-platform graphical interface for programming LED name badges.
    ```
    
    (Note: On some systems you may need to use `pip3` instead of `pip`)
+   Sometimes you might run into a shared library error (`Could not find the hidapi shared library.`)
+   If so, after making sure you installed both `hidapi` and `pyhidapi`, run:
+  ```bash
+  export DYLD_LIBRARY_PATH=$(brew --prefix hidapi)/lib:$DYLD_LIBRARY_PATH
+  ```
 
 ### Files Needed
 
