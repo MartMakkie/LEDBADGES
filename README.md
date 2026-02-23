@@ -25,7 +25,7 @@ A simple, cross-platform graphical interface for programming LED name badges.
 
 3. **Python packages:**
    ```bash
-   pip install pyusb hidapi pillow
+   pip install pyusb pyhidapi pillow
    ```
    
    (Note: On some systems you may need to use `pip3` instead of `pip`)
