@@ -93,6 +93,7 @@ fi
 # Step 2: Install system dependencies
 print_info "[2/7] Installing system dependencies..."
 brew install python@3.11 hidapi || true
+brew install python-tk@3.12
 print_success "System dependencies installed"
 
 # Step 3: Create installation directory
