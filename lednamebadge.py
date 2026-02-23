@@ -576,7 +576,8 @@ class WriteLibUsb(WriteMethod):
         import usb.util
         _module_loaded = True
         print("Module usb.core detected")
-    except:
+    except Exception as e:
+        print(e)
         pass
 
     def __init__(self):
@@ -677,7 +678,8 @@ class WriteUsbHidApi(WriteMethod):
         pyhidapi.hid_init()
         _module_loaded = True
         print("Module pyhidapi detected")
-    except:
+    except Exception as e:
+        print(e)
         pass
 
     def __init__(self):
@@ -744,8 +746,8 @@ class WriteSerial(WriteMethod):
         import serial
         _module_loaded = True
         print("Module pyserial detected")
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
     def __init__(self):
         WriteMethod.__init__(self)
