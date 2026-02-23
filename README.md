@@ -211,6 +211,8 @@ sudo python3 led_badge_gui.py
 4. Set up libusb-win32 (see Windows section in lednamebadge.py)
 5. Double-click `start.bat` or run `python led_badge_gui.py`
 
+For Windows users only: if all else fails, you can always use the manufacturers software (https://lesun-led.com/software/led-badge.rar)
+
 ## License
 
 This GUI is released under the same license as the original led-name-badge-ls32 project.
