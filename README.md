@@ -13,11 +13,13 @@ A simple, cross-platform graphical interface for programming LED name badges.
    **macOS:**
    ```bash
    brew install hidapi
+   brew install python-tk
    ```
 
    **Linux (Ubuntu/Debian):**
    ```bash
    sudo apt-get install libhidapi-hidraw0
+   sudo apt-get python-tk
    ```
 
    **Windows:**
