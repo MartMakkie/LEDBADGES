@@ -93,7 +93,7 @@ fi
 # Step 2: Install system dependencies
 print_info "[2/7] Installing system dependencies..."
 brew install python@3.11 hidapi || true
-brew install python-tk@3.12
+brew install python-tk@3.11
 print_success "System dependencies installed"
 
 # Step 3: Create installation directory
@@ -111,7 +111,7 @@ print_success "Virtual environment created"
 # Step 5: Install Python packages
 print_info "[5/7] Installing Python packages..."
 pip install --upgrade pip > /dev/null 2>&1
-pip install pyusb hidapi pillow > /dev/null 2>&1
+pip install pyusb pyhidapi pillow > /dev/null 2>&1
 print_success "Python packages installed"
 
 # Step 6: Copy application files
