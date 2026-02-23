@@ -179,7 +179,7 @@ You can create a simple package with:
 
 # Install dependencies
 brew install python hidapi
-pip3 install pyusb hidapi pillow
+pip3 install pyusb pyhidapi pillow
 
 # Run the GUI
 python3 led_badge_gui.py
